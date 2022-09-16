@@ -1,6 +1,6 @@
 
 import java.util.*;
-import java.util.stream.IntStream;
+
 
 public class Java2 {
 
@@ -30,24 +30,21 @@ public class Java2 {
     }
 
     /**
-     * Второе задание под вариантом 53 (номер по писку 3, номер группы 191):
-     * Определить, сколько процентов от всего количества элементов последовательности целых чисел составляют нечетные числа.
+     * Второе задание под вариантом 51 (номер по писку 3, номер группы 191):
+     * Заполнить массив из N элементов с начальным значением A[0] != 0, по принципу
+     * A[i] = A[i div 2] + A[i-1]
      */
     private static void Second() {
         Random rnd = new Random();
         int n = rnd.nextInt(1,20);
         int[] A = new int[n];
-        float odd = 0;
-        for (int i = 0; i < n; i++) {
-            A[i] = rnd.nextInt();
-            if(A[i]%2 != 0){
-                odd += 1;
+        A[0] = rnd.nextInt(1,1000);
+        for (int i = 1; i <= n-1; i++) {
+            A[0] = A[0];
+            A[i] = A[i/2] + A[i-1];
             }
-        }
-        float l = A.length;
         System.out.println("Your Array A:");
         System.out.println(Arrays.toString(A));
-        System.out.printf("Percentage of odd numbers in array A: %.2f percent\n", ((odd*100)/l));
     }
 
     /**
@@ -85,11 +82,11 @@ public class Java2 {
      */
     private static void Fourth() {
         Random rnd = new Random();
-        int n = rnd.nextInt(1,20);
+        int n = rnd.nextInt(2,20);
         float[] A = new float[n];
         float[] result = new float[n-1];
         float sum = 0;
-        int index = 0;
+        int index = -1;
         for (int i = 0; i < n; i++) {
             A[i] = rnd.nextFloat(-10,10);
             sum += A[i];
@@ -123,7 +120,6 @@ public class Java2 {
         Random rnd = new Random();
         int n = rnd.nextInt(1,20);
         float[] A = new float[n];
-        float[] result = new float[2*n];
         for (int i = 0; i < n; i++) {
             A[i] = rnd.nextFloat(-10,10);
         }
@@ -141,7 +137,7 @@ public class Java2 {
     public static void main(String[] args) {
         System.out.println("TASK 26");
         First();
-        System.out.println("\nTASK 53");
+        System.out.println("\nTASK 51");
         Second();
         System.out.println("\nTASK 76");
         Third();
